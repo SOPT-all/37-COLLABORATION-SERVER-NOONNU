@@ -5,13 +5,14 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sopt.noonnu.font.domain.Font;
+import sopt.noonnu.global.base.BaseCreatedEntity;
 import sopt.noonnu.user.domain.User;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "compare_fonts", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "font_id"}))
-public class LikeFonts {
+public class LikeFonts extends BaseCreatedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
