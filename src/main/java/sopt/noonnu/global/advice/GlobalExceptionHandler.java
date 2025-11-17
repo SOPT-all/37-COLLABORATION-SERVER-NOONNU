@@ -1,4 +1,4 @@
-package sopt.noonnu.global.exception;
+package sopt.noonnu.global.advice;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +20,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import sopt.noonnu.global.dto.CustomErrorResponse;
+import sopt.noonnu.global.exception.BaseException;
+import sopt.noonnu.global.exception.CommonErrorCode;
+import sopt.noonnu.global.exception.ErrorCode;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,6 @@
-package sopt.noonnu.global.exception;
+package sopt.noonnu.global.dto;
+
+import sopt.noonnu.global.exception.ErrorCode;
 
 public record CustomErrorResponse (
 
