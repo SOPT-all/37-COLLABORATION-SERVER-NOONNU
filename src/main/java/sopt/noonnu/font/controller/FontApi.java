@@ -11,9 +11,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sopt.noonnu.font.domain.*;
-import sopt.noonnu.font.dto.response.FontResponse;
 import sopt.noonnu.font.dto.response.PreviewFontResponse;
 import sopt.noonnu.global.dto.ApiResponse;
+import sopt.noonnu.font.dto.FontListResponse;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public interface FontApi {
                     description = "무료 폰트 목록 조회 성공",
                     content = @Content(
                             mediaType = "application/json",
-                            array = @ArraySchema(schema = @Schema(implementation = FontResponse.class))
+                            array = @ArraySchema(schema = @Schema(implementation = FontListResponse.class))
                     )
             ),
             @io.swagger.v3.oas.annotations.responses.
@@ -47,7 +47,7 @@ public interface FontApi {
             )
     })
     @GetMapping("/fonts")
-    ResponseEntity<ApiResponse<List<FontResponse>>> getFonts(
+    FontListResponse getFonts(
             @Parameter(
                     in = ParameterIn.HEADER,
                     name = "userId",

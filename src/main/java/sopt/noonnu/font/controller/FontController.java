@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sopt.noonnu.font.domain.*;
-import sopt.noonnu.font.dto.response.FontResponse;
+import sopt.noonnu.font.dto.FontListResponse;
 import sopt.noonnu.font.dto.response.PreviewFontResponse;
 import sopt.noonnu.font.service.FontService;
 import sopt.noonnu.global.dto.ApiResponse;
@@ -18,17 +18,17 @@ public class FontController implements FontApi{
 
     private final FontService fontService;
 
-    @GetMapping("/fonts")
-    public ResponseEntity<ApiResponse<List<FontResponse>>> getFonts(
-            @RequestHeader("userId") Long userId,
+    @GetMapping
+    public FontListResponse getFonts(
+            @RequestHeader(value = "userId", defaultValue = "POPULAR") Long userId,
             @RequestParam("sortBy") EFontSort sortBy,
-            @RequestParam("thicknessNum") int thicknessNum,
+            @RequestParam(value = "thicknessNum", defaultValue = "1") int thicknessNum,
             @RequestParam(value = "purpose", required = false) List<EFontPurpose> purposes,
             @RequestParam(value = "shape", required = false) List<EFontShape> shapes,
             @RequestParam(value = "mood", required = false) List<EFontMood> moods,
             @RequestParam(value = "license", required = false) List<EFontLicense> licenses
     ) {
-        List<FontResponse> result = fontService.getFonts(
+        FontListResponse result = fontService.getFonts(
                 userId,
                 sortBy,
                 thicknessNum,
@@ -38,7 +38,7 @@ public class FontController implements FontApi{
                 licenses
         );
 
-        return ResponseEntity.ok(ApiResponse.success(result));
+        return result;
     }
 
     @GetMapping("/user/compared-fonts/preview")
