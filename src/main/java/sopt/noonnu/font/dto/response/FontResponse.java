@@ -1,4 +1,4 @@
-package sopt.noonnu.font.dto;
+package sopt.noonnu.font.dto.response;
 
 import sopt.noonnu.font.domain.Font;
 import sopt.noonnu.font.domain.FontMetadata;
