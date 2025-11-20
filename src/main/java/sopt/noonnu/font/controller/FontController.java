@@ -18,8 +18,8 @@ public class FontController implements FontApi {
 
     @GetMapping
     public FontListResponse getFonts(
-            @RequestHeader(value = "userId", defaultValue = "POPULAR") Long userId,
-            @RequestParam("sortBy") EFontSort sortBy,
+            @RequestHeader(value = "userId") Long userId,
+            @RequestParam(value = "sortBy", defaultValue = "POPULAR") EFontSort sortBy,
             @RequestParam(value = "thicknessNum", defaultValue = "1") int thicknessNum,
             @RequestParam(value = "purpose", required = false) List<EFontPurpose> purposes,
             @RequestParam(value = "shape", required = false) List<EFontShape> shapes,
