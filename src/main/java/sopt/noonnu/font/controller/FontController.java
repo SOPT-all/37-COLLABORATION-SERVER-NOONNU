@@ -18,7 +18,7 @@ public class FontController implements FontApi{
 
     private final FontService fontService;
 
-    @GetMapping
+    @GetMapping("/fonts")
     public FontListResponse getFonts(
             @RequestHeader(value = "userId", defaultValue = "POPULAR") Long userId,
             @RequestParam("sortBy") EFontSort sortBy,

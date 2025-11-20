@@ -63,6 +63,6 @@ public class FontService {
     }
 
     public List<PreviewFontResponse> getComparedFontPreviews(Long userId) {
-        return userFontRepository.findComparedFontPreviews(userId);
+        return userFontService.getComparedFontPreviews(userId);
     }
 }

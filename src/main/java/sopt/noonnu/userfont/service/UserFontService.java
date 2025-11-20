@@ -3,6 +3,7 @@ package sopt.noonnu.userfont.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sopt.noonnu.font.dto.response.PreviewFontResponse;
 import sopt.noonnu.userfont.domain.UserFonts;
 import sopt.noonnu.userfont.repository.UserFontRepository;
 
@@ -29,5 +30,9 @@ public class UserFontService {
         }
 
         return map;
+    }
+
+    public List<PreviewFontResponse> getComparedFontPreviews(Long userId) {
+        return userFontRepository.findComparedFontPreviews(userId);
     }
 }
