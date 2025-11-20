@@ -20,7 +20,7 @@ public record FontListResponse(
             String phrase,
             boolean isLiked,
             boolean isCompared,
-            FontMetadataResponse fontMetadata
+            FontMetadata fontMetadata
     ) {
         public static FontResponse of(Font font, boolean isLiked, boolean isCompared) {
             return new FontResponse(
@@ -31,24 +31,8 @@ public record FontListResponse(
                     font.getPhrase(),
                     isLiked,
                     isCompared,
-                    FontMetadataResponse.from(font.getFontMetadata())
+                    font.getFontMetadata()
             );
-        }
-
-        public record FontMetadataResponse(
-                String fontFamily,
-                String fontSource,
-                String fontWeight,
-                String fontDisplay
-        ) {
-            public static FontMetadataResponse from(FontMetadata metadata) {
-                return new FontMetadataResponse(
-                        metadata.getFontFamily(),
-                        metadata.getFontSource(),
-                        metadata.getFontWeight(),
-                        metadata.getFontDisplay()
-                );
-            }
         }
     }
 }
