@@ -4,7 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sopt.noonnu.font.domain.*;
-import sopt.noonnu.font.dto.FontResponse;
+import sopt.noonnu.font.dto.response.FontResponse;
+import sopt.noonnu.font.dto.response.PreviewFontResponse;
 import sopt.noonnu.font.repository.FontRepository;
 import sopt.noonnu.global.exception.BaseException;
 import sopt.noonnu.global.exception.CommonErrorCode;
@@ -62,5 +63,9 @@ public class FontService {
                     return FontResponse.of(font, isLiked, isCompared);
                 })
                 .toList();
+    }
+
+    public List<PreviewFontResponse> getComparedFontPreviews(Long userId) {
+        return userFontRepository.findComparedFontPreviews(userId);
     }
 }
