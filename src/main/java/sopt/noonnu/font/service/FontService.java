@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sopt.noonnu.font.domain.*;
-import sopt.noonnu.font.dto.FontResponse;
+import sopt.noonnu.font.dto.FontListResponse;
 import sopt.noonnu.font.repository.FontRepository;
 import sopt.noonnu.global.exception.BaseException;
 import sopt.noonnu.global.exception.CommonErrorCode;
@@ -23,7 +23,7 @@ public class FontService {
     private final FontRepository fontRepository;
     private final UserFontRepository userFontRepository;
 
-    public List<FontResponse> getFonts(
+    public FontListResponse getFonts(
             Long userId,
             EFontSort sortBy,
             Integer thicknessNum,
@@ -51,7 +51,7 @@ public class FontService {
             userFontMap.put(uf.getFont().getId(), uf);
         }
 
-        return fonts.stream()
+        List<FontListResponse.FontResponse> fontResponses = fonts.stream()
                 .map(font -> {
                     Long fontId = font.getId();
                     UserFonts userFont = userFontMap.get(fontId);
@@ -59,8 +59,10 @@ public class FontService {
                     boolean isLiked = userFont != null && userFont.isLiked();
                     boolean isCompared = userFont != null && userFont.isCompared();
 
-                    return FontResponse.of(font, isLiked, isCompared);
+                    return FontListResponse.FontResponse.of(font, isLiked, isCompared);
                 })
                 .toList();
+
+        return FontListResponse.from(fontResponses);
     }
 }

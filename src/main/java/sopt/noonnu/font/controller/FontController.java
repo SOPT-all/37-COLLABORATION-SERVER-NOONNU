@@ -1,12 +1,10 @@
 package sopt.noonnu.font.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sopt.noonnu.font.domain.*;
-import sopt.noonnu.font.dto.FontResponse;
+import sopt.noonnu.font.dto.FontListResponse;
 import sopt.noonnu.font.service.FontService;
-import sopt.noonnu.global.dto.ApiResponse;
 
 import java.util.List;
 
@@ -18,7 +16,7 @@ public class FontController implements FontApi {
     private final FontService fontService;
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<FontResponse>>> getFonts(
+    public FontListResponse getFonts(
             @RequestHeader("userId") Long userId,
             @RequestParam("sortBy") EFontSort sortBy,
             @RequestParam("thicknessNum") int thicknessNum,
@@ -27,7 +25,7 @@ public class FontController implements FontApi {
             @RequestParam(value = "mood", required = false) List<EFontMood> moods,
             @RequestParam(value = "license", required = false) List<EFontLicense> licenses
     ) {
-        List<FontResponse> result = fontService.getFonts(
+        FontListResponse result = fontService.getFonts(
                 userId,
                 sortBy,
                 thicknessNum,
@@ -37,6 +35,6 @@ public class FontController implements FontApi {
                 licenses
         );
 
-        return ResponseEntity.ok(ApiResponse.success(result));
+        return result;
     }
 }
