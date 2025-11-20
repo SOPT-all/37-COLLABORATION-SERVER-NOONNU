@@ -112,7 +112,10 @@ public interface FontApi {
             @io.swagger.v3.oas.annotations.responses.
                     ApiResponse(
                     responseCode = "400",
-                    description = "잘못된 요청 헤더"
+                    description = "잘못된 요청 헤더",
+                    content = @Content(
+                            schema = @Schema(implementation = CustomErrorResponse.class)
+                    )
             )
     })
     @GetMapping("/user/compared-fonts/preview")
