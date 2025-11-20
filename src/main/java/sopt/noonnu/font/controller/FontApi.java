@@ -12,15 +12,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sopt.noonnu.font.domain.*;
 import sopt.noonnu.font.dto.response.FontResponse;
+import sopt.noonnu.font.dto.response.PreviewFontResponse;
 import sopt.noonnu.global.dto.ApiResponse;
 
 import java.util.List;
 
-@Tag(name = "Font", description = "무료 폰트 조회 API")
+@Tag(name = "Font")
 public interface FontApi {
 
     @Operation(
-            summary = "무료 폰트 목록 조회",
+            summary = "무료 폰트 전체 조회",
             description = """
                     정렬 및 필터 조건에 따라 무료 폰트 목록을 조회합니다.  
                     
@@ -91,5 +92,37 @@ public interface FontApi {
             )
             @RequestParam(value = "license", required = false) List<EFontLicense> licenses
     );
+
+    @Operation(
+            summary = "폰트 비교하기 플로팅버튼 조회",
+            description = "비교하기에 담긴 폰트들의 id, name 목록을 조회합니다."
+    )
+    @ApiResponses({
+            @io.swagger.v3.oas.annotations.responses.
+                    ApiResponse(
+                    responseCode = "200",
+                    description = "폰트 미리보기 조회 성공",
+                    content = @Content(
+                            mediaType = "application/json",
+                            array = @ArraySchema(schema = @Schema(implementation = PreviewFontResponse.class))
+                    )
+            ),
+            @io.swagger.v3.oas.annotations.responses.
+                    ApiResponse(
+                    responseCode = "400",
+                    description = "잘못된 요청 헤더"
+            )
+    })
+    @GetMapping("/user/compared-fonts/preview")
+    ResponseEntity<ApiResponse<List<PreviewFontResponse>>> getComparedFontPreviews(
+            @Parameter(
+                    in = ParameterIn.HEADER,
+                    name = "userId",
+                    description = "사용자 ID",
+                    required = true
+            )
+            @RequestHeader("userId") Long userId
+    );
+
 
 }
