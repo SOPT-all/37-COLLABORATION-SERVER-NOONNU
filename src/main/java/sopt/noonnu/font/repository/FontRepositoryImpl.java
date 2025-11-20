@@ -34,6 +34,8 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
 
         return queryFactory
                 .selectFrom(font)
+                .from(font)
+                .leftJoin(userFont).on(userFont.font.eq(font))
                 .where(
                         thicknessEq(thicknessNum, font),
                         purposesIn(purposes, font),
@@ -41,6 +43,7 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
                         moodsIn(moods, font),
                         licensesIn(licenses, font)
                 )
+                .groupBy(font.id)
                 .orderBy(orderSpecifier(sortType, font, likeCount))
                 .fetch();
     }
