@@ -36,8 +36,6 @@ public class FontController implements FontApi {
                 licenses
         );
 
-        FontListResponse result = fontService.getFonts(command);
-
-        return result;
+        return fontService.getFonts(command);
     }
 }
