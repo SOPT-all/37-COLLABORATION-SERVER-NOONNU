@@ -9,9 +9,8 @@ import sopt.noonnu.font.repository.FontRepository;
 import sopt.noonnu.global.exception.BaseException;
 import sopt.noonnu.global.exception.CommonErrorCode;
 import sopt.noonnu.userfont.domain.UserFonts;
-import sopt.noonnu.userfont.repository.UserFontRepository;
+import sopt.noonnu.userfont.service.UserFontService;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ import java.util.Map;
 public class FontService {
 
     private final FontRepository fontRepository;
-    private final UserFontRepository userFontRepository;
+    private final UserFontService userFontService;
 
     public FontListResponse getFonts(
             Long userId,
@@ -45,11 +44,7 @@ public class FontService {
                 sortBy
         );
 
-        Map<Long, UserFonts> userFontMap = new HashMap<>();
-        List<UserFonts> userFonts = userFontRepository.findByUserId(userId);
-        for (UserFonts uf : userFonts) {
-            userFontMap.put(uf.getFont().getId(), uf);
-        }
+        Map<Long, UserFonts> userFontMap = userFontService.getUserFontMapByUserId(userId);
 
         List<FontListResponse.FontResponse> fontResponses = fonts.stream()
                 .map(font -> {
