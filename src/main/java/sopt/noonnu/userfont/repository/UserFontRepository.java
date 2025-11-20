@@ -5,6 +5,8 @@ import sopt.noonnu.userfont.domain.UserFonts;
 
 import java.util.List;
 
-public interface UserFontRepository extends JpaRepository<UserFonts, Long>, UserFontRepositoryCustom {
+public interface UserFontRepository extends JpaRepository<UserFonts, Long> {
+    List<UserFonts> findByUserId(Long userId);
+
     List<UserFonts> findByUserIdAndIsComparedTrue(Long userId);
 }
