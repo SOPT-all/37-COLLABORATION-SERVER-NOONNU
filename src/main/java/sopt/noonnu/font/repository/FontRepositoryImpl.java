@@ -2,6 +2,7 @@ package sopt.noonnu.font.repository;
 
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 import sopt.noonnu.font.domain.*;
+import sopt.noonnu.userfont.domain.QUserFonts;
 
 @RequiredArgsConstructor
 public class FontRepositoryImpl implements FontRepositoryCustom {
@@ -25,6 +27,10 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
             EFontSort sortType
     ) {
         QFont font = QFont.font;
+        QUserFonts userFont = QUserFonts.userFonts;
+
+        NumberExpression<Long> likeCount =
+                userFont.isLiked.when(true).then(1L).otherwise(0L).sum();
 
         return queryFactory
                 .selectFrom(font)
@@ -35,7 +41,7 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
                         moodsIn(moods, font),
                         licensesIn(licenses, font)
                 )
-                .orderBy(orderSpecifier(sortType, font))
+                .orderBy(orderSpecifier(sortType, font, likeCount))
                 .fetch();
     }
 
@@ -63,9 +69,10 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
         return font.fontLicenses.any().in(licenses);
     }
 
-    private OrderSpecifier<?> orderSpecifier(EFontSort sortType, QFont font) {
+    private OrderSpecifier<?> orderSpecifier(EFontSort sortType, QFont font, NumberExpression<Long> likeCount) {
         return switch (sortType) {
-            case POPULAR, VIEW_COUNT -> font.viewCount.desc();
+            case POPULAR -> likeCount.desc();
+            case VIEW_COUNT -> font.viewCount.desc();
             case LATEST -> font.createdAt.desc();
             case NAME -> font.name.asc();
         };
