@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/fonts")
-public class FontController {
+public class FontController implements FontApi {
 
     private final FontService fontService;
 
