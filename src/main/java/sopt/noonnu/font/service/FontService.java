@@ -22,29 +22,23 @@ public class FontService {
     private final FontRepository fontRepository;
     private final UserFontService userFontService;
 
-    public FontListResponse getFonts(
-            Long userId,
-            EFontSort sortBy,
-            Integer thicknessNum,
-            List<EFontPurpose> purposes,
-            List<EFontShape> shapes,
-            List<EFontMood> moods,
-            List<EFontLicense> licenses
-    ) {
+    public FontListResponse getFonts(GetFontsCommand command) {
+        Integer thicknessNum = command.thicknessNum();
+
         if (thicknessNum != null && (thicknessNum < 1 || thicknessNum > 9)) {
             throw new BaseException(CommonErrorCode.VALIDATION_ERROR);
         }
 
         List<Font> fonts = fontRepository.findFontsByCondition(
                 thicknessNum,
-                purposes,
-                shapes,
-                moods,
-                licenses,
-                sortBy
+                command.purposes(),
+                command.shapes(),
+                command.moods(),
+                command.licenses(),
+                command.sortBy()
         );
 
-        Map<Long, UserFonts> userFontMap = userFontService.getUserFontMapByUserId(userId);
+        Map<Long, UserFonts> userFontMap = userFontService.getUserFontMapByUserId(command.userId());
 
         List<FontListResponse.FontResponse> fontResponses = fonts.stream()
                 .map(font -> {
