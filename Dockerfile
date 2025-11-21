@@ -1,5 +1,5 @@
-# 멀티 스테이지 빌드로 최적화
-FROM openjdk:17-jdk-slim AS builder
+# Java 21로 변경
+FROM eclipse-temurin:21-jdk AS builder
 
 WORKDIR /app
 
@@ -21,11 +21,13 @@ RUN ./gradlew clean build -x test --no-daemon
 # JAR 파일 추출
 RUN find /app/build/libs -name "*.jar" ! -name "*plain.jar" -exec cp {} /app/app.jar \;
 
-# 실행 스테이지
-FROM openjdk:17-jdk-slim
+# 실행 스테이지 (JRE 21)
+FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
 COPY --from=builder /app/app.jar ./app.jar
+
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
