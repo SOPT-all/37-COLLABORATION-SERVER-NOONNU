@@ -12,6 +12,7 @@ import sopt.noonnu.user.domain.User;
 import sopt.noonnu.user.service.UserService;
 import sopt.noonnu.userfont.domain.UserFonts;
 import sopt.noonnu.userfont.dto.command.UpdateFontFlagCommandDto;
+import sopt.noonnu.userfont.dto.response.UserFontResponse;
 import sopt.noonnu.userfont.service.UserFontService;
 
 import java.util.List;
@@ -65,5 +66,15 @@ public class FontFacadeService {
         List<Font> fonts = userFontService.getComparedFontPreviews(userId);
 
         return FontPreviewListResponse.from(fonts);
+    }
+
+    @Transactional(readOnly = true)
+    public UserFontResponse getLikedFont(Long userId) {
+        return userFontService.getLikedFont(userId);
+    }
+
+    @Transactional(readOnly = true)
+    public UserFontResponse getComparedFont(Long userId) {
+        return userFontService.getComparedFont(userId);
     }
 }

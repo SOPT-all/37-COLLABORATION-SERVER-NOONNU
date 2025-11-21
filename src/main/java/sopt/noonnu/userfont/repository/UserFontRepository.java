@@ -13,4 +13,5 @@ public interface UserFontRepository extends JpaRepository<UserFonts, Long> {
 
     Optional<UserFonts> findByUserIdAndFontId(Long userId, Long fontId);
 
+    List<UserFonts> findByUserIdAndIsLikedTrue(Long userId);
 }
