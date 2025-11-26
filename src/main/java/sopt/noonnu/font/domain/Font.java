@@ -32,35 +32,35 @@ public class Font extends BaseCreatedEntity {
     @Column(name = "phrase", nullable = false)
     private String phrase;
 
-   @Column(name = "view_count")
+    @Column(name = "view_count")
     private long viewCount;
 
     @Embedded
     private FontMetadata fontMetadata;
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "font_purposes", joinColumns = @JoinColumn(name ="font_id"))
+    @CollectionTable(name = "font_purposes", joinColumns = @JoinColumn(name = "font_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "purpose")
     @BatchSize(size = 100)
     private final Set<EFontPurpose> fontPurposes = new HashSet<>();
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "font_shapes", joinColumns = @JoinColumn(name ="font_id"))
+    @CollectionTable(name = "font_shapes", joinColumns = @JoinColumn(name = "font_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "shape")
     @BatchSize(size = 100)
     private final Set<EFontShape> fontShapes = new HashSet<>();
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "font_moods", joinColumns = @JoinColumn(name ="font_id"))
+    @CollectionTable(name = "font_moods", joinColumns = @JoinColumn(name = "font_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "mood")
     @BatchSize(size = 100)
     private final Set<EFontMood> fontMoods = new HashSet<>();
 
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "font_licenses", joinColumns = @JoinColumn(name ="font_id"))
+    @CollectionTable(name = "font_licenses", joinColumns = @JoinColumn(name = "font_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "license")
     @BatchSize(size = 100)

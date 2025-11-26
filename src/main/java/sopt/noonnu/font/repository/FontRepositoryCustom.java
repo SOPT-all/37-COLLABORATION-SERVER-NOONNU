@@ -6,7 +6,6 @@ import java.util.List;
 
 public interface FontRepositoryCustom {
     List<Font> findFontsByCondition(
-            int thicknessNum,
             List<EFontPurpose> purposes,
             List<EFontShape> shapes,
             List<EFontMood> moods,

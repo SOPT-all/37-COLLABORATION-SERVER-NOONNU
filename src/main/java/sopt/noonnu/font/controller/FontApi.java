@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import sopt.noonnu.font.domain.*;
-import sopt.noonnu.font.dto.response.FontPreviewListResponse;
 import sopt.noonnu.font.dto.response.FontListResponse;
 import sopt.noonnu.global.dto.CustomErrorResponse;
 
@@ -25,7 +24,6 @@ public interface FontApi {
                     정렬 및 필터 조건에 따라 무료 폰트 목록을 조회합니다.  
                     
                     - 정렬 기준(sortBy): POPULAR, VIEW_COUNT, LATEST, NAME  
-                    - 두께(thicknessNum): 1~9  
                     - 필터(purpose/shape/mood/license): 여러 값 전달 가능  
                     """
     )
@@ -63,12 +61,6 @@ public interface FontApi {
                     required = true
             )
             @RequestParam("sortBy") EFontSort sortBy,
-
-            @Parameter(
-                    description = "폰트 두께 (1~9)",
-                    required = true
-            )
-            @RequestParam("thicknessNum") int thicknessNum,
 
             @Parameter(
                     description = "폰트 용도 필터",

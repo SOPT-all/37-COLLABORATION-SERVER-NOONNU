@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sopt.noonnu.font.domain.Font;
-import sopt.noonnu.font.dto.command.GetFontsCommand;
+import sopt.noonnu.font.dto.command.GetFontsQuery;
 import sopt.noonnu.font.dto.response.FontListResponse;
 import sopt.noonnu.font.dto.response.FontPreviewListResponse;
 import sopt.noonnu.font.service.FontService;
@@ -41,7 +41,7 @@ public class FontFacadeService {
     }
 
     @Transactional(readOnly = true)
-    public FontListResponse getFonts(GetFontsCommand command){
+    public FontListResponse getFonts(GetFontsQuery command){
         List<Font> fonts = fontService.getFonts(command);
 
         Map<Long, UserFonts> userFontMap = userFontService.getUserFontMapByUserId(command.userId());

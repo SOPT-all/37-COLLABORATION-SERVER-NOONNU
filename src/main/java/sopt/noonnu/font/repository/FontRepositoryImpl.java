@@ -19,7 +19,6 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
 
     @Override
     public List<Font> findFontsByCondition(
-            int thicknessNum,
             List<EFontPurpose> purposes,
             List<EFontShape> shapes,
             List<EFontMood> moods,
@@ -37,7 +36,6 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
                 .from(font)
                 .leftJoin(userFont).on(userFont.font.eq(font))
                 .where(
-                        thicknessEq(thicknessNum, font),
                         purposesIn(purposes, font),
                         shapesIn(shapes, font),
                         moodsIn(moods, font),
@@ -46,10 +44,6 @@ public class FontRepositoryImpl implements FontRepositoryCustom {
                 .groupBy(font.id)
                 .orderBy(orderSpecifier(sortType, font, likeCount))
                 .fetch();
-    }
-
-    private BooleanExpression thicknessEq(int thicknessNum, QFont font) {
-        return font.thicknessNum.eq(thicknessNum);
     }
 
     private BooleanExpression purposesIn(List<EFontPurpose> purposes, QFont font) {
