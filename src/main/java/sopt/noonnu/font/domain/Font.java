@@ -26,6 +26,9 @@ public class Font extends BaseCreatedEntity {
     @Column(name = "producer", nullable = false)
     private String producer;
 
+    @Column(name = "thickness_num", nullable = false)
+    private int thicknessNum;
+
     @Column(name = "phrase", nullable = false)
     private String phrase;
 

@@ -1,20 +1,20 @@
 -- V2__insert_font_and_user.sql
 
 -- 1. 폰트 데이터 일괄 삽입
-INSERT INTO fonts (name, producer, phrase, view_count, font_family, font_source, font_weight, font_display, created_at)
+INSERT INTO fonts (name, producer, thickness_num, phrase, view_count, font_family, font_source, font_weight, font_display, created_at)
 VALUES
-    ('온글잎 박다현체', '온글잎', '안녕 나의 작고 소중한 고양이', 0, 'OngleipParkDahyeon', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
-    ('건축조각체', 'BSW와 BOOMSPACE','건축물과 조각품 같은 건축조각체', 0, 'ArchitecturalSculpture', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2303@1.0/ARCHISCULPTURE_v200.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
-    ('을지로체', '우아한 형제들', '을지로에서 많이 보이는 글씨체', 0, 'Euljiro', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/BMEULJIRO.woff'') format(''woff'')', 'normal', 'swap', NOW()),
-    ('부크크 명조', '(주)부크크',  '책을 사랑하는 사람들을 위한 폰트', 0, 'BookkMyungjo', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Lt.woff2'') format(''woff2'')', '400;700', 'swap', NOW()),
-    ('조선굴림체', '조선일보', '조금 일하고 많이 벌고 싶다', 0, 'JoseonGulim', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff'') format(''woff'')', 'normal', 'swap', NOW()),
-    ('김정철명조', '(주)정림건축', '의식주 중 하나인 건축', 0, 'KimJeongcheolMyoungjo', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Light.woff2'') format(''woff2'')', '300;400;700', 'swap', NOW()),
-    ('나눔스퀘어', '네이버',  '너도 떠나보면 나를 알게 될거야', 0, 'NanumSquare', 'url(''https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css'')', 'normal', 'swap', NOW()),
-    ('Orbit', 'Sooun Cho', '우리는 우주먼지니까 대충 살아도 돼', 0, 'Orbit', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
-    ('피플퍼스트 투쟁체', '피플퍼스트성북센터', '결국 남는건 사람이다', 0, 'PeopleFirstStruggle', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/2406-2@1.0/PeoplefirstFightingTTF.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
-    ('프리텐다드', '길형진 (orioncactus)', '세상에 이런 폰트가 나오다니 천재인듯', 0, 'Pretendard', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2'') format(''woff2'')', '100;200;300;400;500;600;700;800;900', 'swap', NOW()),
-    ('어그로체', '(주)샌드박스네트워크', '어그로가 필요한 순간엔 어그로체를', 0, 'Aggravo', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff'') format(''woff'')', '300;500;700', 'swap', NOW()),
-    ('Wanted Sans', 'Wanted Sans', '[구직중] 김눈누, Designer, +82-10-1234-5678', 0, 'wanted-sans', 'url(''https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css'')', '400;500;600;700;800;900;950', 'swap', NOW());
+    ('온글잎 박다현체', '온글잎', 1, '안녕 나의 작고 소중한 고양이', 0, 'OngleipParkDahyeon', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
+    ('건축조각체', 'BSW와 BOOMSPACE', 1, '건축물과 조각품 같은 건축조각체', 0, 'ArchitecturalSculpture', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2303@1.0/ARCHISCULPTURE_v200.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
+    ('을지로체', '우아한 형제들', 1, '을지로에서 많이 보이는 글씨체', 0, 'Euljiro', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/BMEULJIRO.woff'') format(''woff'')', 'normal', 'swap', NOW()),
+    ('부크크 명조', '(주)부크크', 2, '책을 사랑하는 사람들을 위한 폰트', 0, 'BookkMyungjo', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Lt.woff2'') format(''woff2'')', '400;700', 'swap', NOW()),
+    ('조선굴림체', '조선일보', 1, '조금 일하고 많이 벌고 싶다', 0, 'JoseonGulim', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff'') format(''woff'')', 'normal', 'swap', NOW()),
+    ('김정철명조', '(주)정림건축', 3, '의식주 중 하나인 건축', 0, 'KimJeongcheolMyoungjo', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Light.woff2'') format(''woff2'')', '300;400;700', 'swap', NOW()),
+    ('나눔스퀘어', '네이버', 1, '너도 떠나보면 나를 알게 될거야', 0, 'NanumSquare', 'url(''https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css'')', 'normal', 'swap', NOW()),
+    ('Orbit', 'Sooun Cho', 1, '우리는 우주먼지니까 대충 살아도 돼', 0, 'Orbit', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/Orbit-Regular.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
+    ('피플퍼스트 투쟁체', '피플퍼스트성북센터', 1, '결국 남는건 사람이다', 0, 'PeopleFirstStruggle', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/2406-2@1.0/PeoplefirstFightingTTF.woff2'') format(''woff2'')', 'normal', 'swap', NOW()),
+    ('프리텐다드', '길형진 (orioncactus)', 9, '세상에 이런 폰트가 나오다니 천재인듯', 0, 'Pretendard', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2'') format(''woff2'')', '100;200;300;400;500;600;700;800;900', 'swap', NOW()),
+    ('어그로체', '(주)샌드박스네트워크', 3, '어그로가 필요한 순간엔 어그로체를', 0, 'Aggravo', 'url(''https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff'') format(''woff'')', '300;500;700', 'swap', NOW()),
+    ('Wanted Sans', 'Wanted Sans', 7, '[구직중] 김눈누, Designer, +82-10-1234-5678', 0, 'wanted-sans', 'url(''https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css'')', '400;500;600;700;800;900;950', 'swap', NOW());
 
 -- 2. font_purposes 일괄 삽입
 INSERT INTO font_purposes (font_id, purpose) VALUES

@@ -18,6 +18,7 @@ CREATE TABLE fonts
     id            BIGINT AUTO_INCREMENT PRIMARY KEY,
     name          VARCHAR(255) NOT NULL,
     producer      VARCHAR(255) NOT NULL,
+    thickness_num INT          NOT NULL,
     phrase        VARCHAR(255) NOT NULL,
     font_family   VARCHAR(255) NOT NULL,
     font_display  VARCHAR(255) NOT NULL,
@@ -25,6 +26,7 @@ CREATE TABLE fonts
     font_weight   VARCHAR(255) NOT NULL,
     view_count    BIGINT       DEFAULT 0,
     created_at    DATETIME(6)  NOT NULL,
+    INDEX idx_fonts_thickness (thickness_num),
     INDEX idx_fonts_producer (producer)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
