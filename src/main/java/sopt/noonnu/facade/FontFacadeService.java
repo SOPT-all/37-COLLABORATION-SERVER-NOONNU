@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import sopt.noonnu.font.domain.Font;
 import sopt.noonnu.font.dto.command.GetFontsQuery;
 import sopt.noonnu.font.dto.response.FontListResponse;
-import sopt.noonnu.font.dto.response.FontPreviewListResponse;
+import sopt.noonnu.userfont.dto.response.FontPreviewListResponse;
 import sopt.noonnu.font.service.FontService;
 import sopt.noonnu.user.domain.User;
 import sopt.noonnu.user.service.UserService;

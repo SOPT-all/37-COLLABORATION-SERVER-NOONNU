@@ -3,7 +3,7 @@ package sopt.noonnu.userfont.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import sopt.noonnu.facade.FontFacadeService;
-import sopt.noonnu.font.dto.response.FontPreviewListResponse;
+import sopt.noonnu.userfont.dto.response.FontPreviewListResponse;
 import sopt.noonnu.userfont.dto.command.UpdateFontFlagCommandDto;
 import sopt.noonnu.userfont.dto.request.UpdateCompareFlagRequestDto;
 import sopt.noonnu.userfont.dto.request.UpdateLikeFlagRequestDto;

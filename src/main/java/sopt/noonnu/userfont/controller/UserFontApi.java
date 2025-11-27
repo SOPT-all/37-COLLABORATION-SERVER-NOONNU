@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
-import sopt.noonnu.font.dto.response.FontPreviewListResponse;
+import sopt.noonnu.userfont.dto.response.FontPreviewListResponse;
 import sopt.noonnu.global.dto.CustomErrorResponse;
 import sopt.noonnu.userfont.dto.request.UpdateCompareFlagRequestDto;
 import sopt.noonnu.userfont.dto.request.UpdateLikeFlagRequestDto;
